@@ -13,9 +13,31 @@
     <a href="../contact/">Contact</a>
     <a href="https://github.com/jasonyuki71" target="_blank"
         rel="noopener noreferrer">GitHub</a>
+    <a href="../resume/">Resume</a>
     </nav>
 
     <h1>Contact</h1>
     <p>You can reach me via email at jasonyuki71@gmail.com.</p>
+    <form action="mailto:jasonyuki71@gmail.com"
+        method="POST"
+        enctype="text/plain">
+
+    <label>
+    Email:
+    <input type="email" name="email">
+    </label>
+
+    <label>
+    Subject:
+    <input name="subject">
+    </label>
+
+    <label>
+    Message:
+    <textarea name="body" rows="5"></textarea>
+    </label>
+
+    <button>Send</button>
+</form>
 </body>
 </html>
