@@ -13,7 +13,7 @@ img {
 
 /* Website accent color */
 :root {
-    --color-accent: oklch(65% 0.2 250);
+    --color-accent: oklch(64.58% 0.31058 319.65 / 0.653);
     accent-color: var(--color-accent);
 }
 
