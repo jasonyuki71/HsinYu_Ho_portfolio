@@ -21,7 +21,7 @@ img {
 nav {
     display: flex;
     margin-bottom: 1em;
-    border-bottom: 1px solid oklch(80% 0.03 200);
+    border-bottom: 1px solid oklch(89.7% 0.05134 199.431);
 }
 
 /* Navigation links */
@@ -35,7 +35,7 @@ nav a {
 
 /* Current page */
 nav a.current {
-    border-bottom: 0.4em solid oklch(80% 0.03 200);
+    border-bottom: 0.4em solid oklch(69.515% 0.13047 4.286);
     padding-bottom: 0.1em;
 }
 
@@ -43,5 +43,5 @@ nav a.current {
 nav a:hover {
     border-bottom: 0.4em solid var(--color-accent);
     padding-bottom: 0.1em;
-    background-color: oklch(95% 0.02 250);
+    background-color: oklch(94.442% 0.03101 340.365);
 }
