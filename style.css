@@ -1,3 +1,22 @@
+input,
+textarea,
+button {
+    font: inherit;
+}
+
+form label {
+    display: block;
+    margin-block: 1em;
+}
+
+form input,
+form textarea,
+form button {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 body {
     font: 100%/1.5 system-ui;
     max-width: 100ch;
