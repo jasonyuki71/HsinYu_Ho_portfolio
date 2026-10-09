@@ -42,7 +42,7 @@ img {
 
 /* Website accent color */
 :root {
-    --color-accent: oklch(78.741% 0.17146 69.116 / 0.574);
+    --color-accent: oklch(70.567% 0.10693 81.274);
     accent-color: var(--color-accent);
 }
 
@@ -113,6 +113,7 @@ h6 {
 /* Resume title */
 .resume h1 {
     font-size: 250%;
+    --color-accent: oklch(70.567% 0.10693 81.274);
     color: var(--color-accent);
 }   
 
