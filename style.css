@@ -1,8 +1,47 @@
 body {
     font: 100%/1.5 system-ui;
+    max-width: 100ch;
+    margin-inline: auto;
+    padding: 1em;
 }
 
 img {
-    max-width: 30%;
+    width: 30%;
+    max-width: 100%;
     height: auto;
+}
+
+/* Website accent color */
+:root {
+    --color-accent: oklch(65% 0.2 250);
+    accent-color: var(--color-accent);
+}
+
+/* Navigation layout */
+nav {
+    display: flex;
+    margin-bottom: 1em;
+    border-bottom: 1px solid oklch(80% 0.03 200);
+}
+
+/* Navigation links */
+nav a {
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    padding: 0.5em;
+}
+
+/* Current page */
+nav a.current {
+    border-bottom: 0.4em solid oklch(80% 0.03 200);
+    padding-bottom: 0.1em;
+}
+
+/* Link under the mouse */
+nav a:hover {
+    border-bottom: 0.4em solid var(--color-accent);
+    padding-bottom: 0.1em;
+    background-color: oklch(95% 0.02 250);
 }
