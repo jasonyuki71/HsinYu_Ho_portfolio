@@ -50,7 +50,8 @@ img {
 nav {
     display: flex;
     margin-bottom: 1em;
-    border-bottom: 1px solid oklch(89.7% 0.05134 199.431);
+    --border-color: oklch(50% 10% 200 / 40%);
+    border-bottom: 1px solid var(--border-color);
 }
 
 /* Navigation links */
@@ -72,7 +73,11 @@ nav a.current {
 nav a:hover {
     border-bottom: 0.4em solid var(--color-accent);
     padding-bottom: 0.1em;
-    background-color: oklch(94.442% 0.03101 340.365);
+    background-color: color-mix(
+    in oklch,
+    var(--color-accent),
+    canvas 85%
+    );
 }
 
 .projects {
@@ -148,10 +153,31 @@ h6 {
 
 /* Dates */
 .resume time {
-    color: #541010;
+    color: color-mix(in oklch, canvastext 70%, canvas);
 }
 
 /* Links inside resume sections */
 .resume section a {
     color: var(--color-accent);
+}
+
+:root {
+    color-scheme: light dark;
+}
+
+body {
+    background-color: canvas;
+    color: canvastext;
+}
+
+/* Put the theme selector in the top-right corner. */
+.color-scheme {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 80%;
+}
+
+select {
+    font: inherit;
 }
