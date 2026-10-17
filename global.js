@@ -1,37 +1,52 @@
 console.log("IT’S ALIVE!");
 
 function $$(selector, context = document) {
-    return Array.from(context.querySelectorAll(selector));
+  return Array.from(context.querySelectorAll(selector));
 }
 
-// Use different base paths locally and on GitHub Pages.
+// Website location: local server or GitHub Pages.
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
     ? "/"
     : "/HsinYu_Ho_portfolio/";
 
-// List the pages in the navigation menu.
+// Navigation links.
 let pages = [
-    { url: "", title: "Home" },
-    { url: "projects/", title: "Projects" },
-    { url: "contact/", title: "Contact" },
-    { url: "resume/", title: "Resume" },
-    { url: "https://github.com/jasonyuki71", title: "GitHub" }
+  { url: "", title: "Home" },
+  { url: "projects/", title: "Projects" },
+  { url: "contact/", title: "Contact" },
+  { url: "resume/", title: "Resume" },
+  { url: "https://github.com/jasonyuki71", title: "GitHub" }
 ];
 
-// Create the navigation menu.
+// Add a navigation element at the beginning of the page.
 let nav = document.createElement("nav");
 document.body.prepend(nav);
 
-// Create one link for each page.
+// Add each link to the navigation element.
 for (let page of pages) {
-    let url = page.url;
+  let url = page.url;
 
-    if (!url.startsWith("http")) {
+  if (!url.startsWith("http")) {
     url = BASE_PATH + url;
-    }
+  }
 
-    nav.insertAdjacentHTML(
-    "beforeend",
-    `<a href="${url}">${page.title}</a>`
-    );
+  let a = document.createElement("a");
+  a.href = url;
+  a.textContent = page.title;
+
+  // Highlight the current page.
+  if (
+    a.host === location.host &&
+    a.pathname === location.pathname
+  ) {
+    a.classList.add("current");
+  }
+
+  // Open GitHub in a new tab.
+  if (a.host !== location.host) {
+    a.target = "_blank";
+    a.rel = "noopener";
+  }
+
+  nav.append(a);
 }
