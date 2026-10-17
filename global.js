@@ -1,7 +1,7 @@
 console.log("IT’S ALIVE!");
 
 function $$(selector, context = document) {
-  return Array.from(context.querySelectorAll(selector));
+    return Array.from(context.querySelectorAll(selector));
 }
 
 // Website location: local server or GitHub Pages.
@@ -11,11 +11,11 @@ const BASE_PATH = (location.hostname === "localhost" || location.hostname === "1
 
 // Navigation links.
 let pages = [
-  { url: "", title: "Home" },
-  { url: "projects/", title: "Projects" },
-  { url: "contact/", title: "Contact" },
-  { url: "resume/", title: "Resume" },
-  { url: "https://github.com/jasonyuki71", title: "GitHub" }
+    { url: "", title: "Home" },
+    { url: "projects/", title: "Projects" },
+    { url: "contact/", title: "Contact" },
+    { url: "resume/", title: "Resume" },
+    { url: "https://github.com/jasonyuki71", title: "GitHub" }
 ];
 
 // Add a navigation element at the beginning of the page.
@@ -89,3 +89,31 @@ select.addEventListener("input", function (event) {
 
     localStorage.colorScheme = colorScheme;
 });
+
+// Find the contact form.
+let form = document.querySelector('form[action^="mailto:"]');
+
+// Only run this code on pages with a contact form.
+if (form) {
+    form.addEventListener("submit", function (event) {
+    // Stop the browser's default form submission.
+    event.preventDefault();
+
+    // Read the form values.
+    let data = new FormData(form);
+
+    // Build the email URL.
+    let url = form.action + "?";
+
+    for (let [name, value] of data) {
+        url +=
+        encodeURIComponent(name) +
+        "=" +
+        encodeURIComponent(value) +
+        "&";
+    }
+
+    // Open the user's email application.
+    location.href = url;
+    });
+}
