@@ -1,0 +1,74 @@
+[
+    {
+    "title": "Handwritten Math to LaTeX",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "A team project that converts handwritten mathematical expressions into LaTeX."
+    },
+    {
+    "title": "DonkeyCar",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Exploring image augmentation to improve autonomous driving across different lighting conditions."
+    },
+    {
+    "title": "Grocery Store Food Processing",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Comparing predicted ultra-processed food percentages across three grocery stores."
+    },
+    {
+    "title": "Cancer Prediction",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "A team project applying machine learning to cancer prediction."
+    },
+    {
+    "title": "Air Quality and Health Impact",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Analyzing air quality data and predicting health impact categories."
+    },
+    {
+    "title": "League of Legends Analysis",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Exploring game data through prediction and fairness analysis."
+    },
+    {
+    "title": "DataHacks Trading Strategies",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Developing and evaluating trading strategies for the DataHacks competition."
+    },
+    {
+    "title": "Forest Change Visualization",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Visualizing changes in forest area and comparing different ways of presenting the data."
+    },
+    {
+    "title": "Personal Portfolio",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Building a personal website using HTML, CSS, and JavaScript."
+    },
+    {
+    "title": "Placeholder Project A",
+    "year": 2025,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Placeholder data for practicing project visualizations."
+    },
+    {
+    "title": "Placeholder Project B",
+    "year": 2025,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Placeholder data for practicing project visualizations."
+    },
+    {
+    "title": "Placeholder Project C",
+    "year": 2024,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Placeholder data for practicing project visualizations."
+    }
+]
