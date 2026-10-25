@@ -117,3 +117,41 @@ if (form) {
     location.href = url;
     });
 }
+
+export async function fetchJSON(url) {
+    try {
+    // Load the file.
+    const response = await fetch(url);
+    // Check whether the request succeeded.
+    if (!response.ok) {
+        throw new Error(
+        `Failed to fetch data: ${response.statusText}`
+        );
+    }
+    // Convert the response into JavaScript data.
+    const data = await response.json();
+    return data;
+} catch (error) {
+    console.error("Error fetching or parsing JSON data:", error);
+    }
+}
+
+export function renderProjects(
+    projects,
+    containerElement,
+    headingLevel = "h2"
+) {
+  // Clear existing cards to avoid duplicates.
+    containerElement.innerHTML = "";
+  // Create one card for each project.
+    for (let project of projects) {
+    const article = document.createElement("article");
+
+    article.innerHTML = `
+        <${headingLevel}>${project.title}</${headingLevel}>
+        <img src="${project.image}" alt="${project.title}">
+        <p>${project.description}</p>
+    `;
+    containerElement.appendChild(article);
+    }
+}
