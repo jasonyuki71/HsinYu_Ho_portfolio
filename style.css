@@ -199,3 +199,16 @@ select {
     margin: 0;
     font-size: 2em;
 }
+
+.project-year {
+    color: color-mix(in oklch, canvastext 60%, canvas);
+    font-family: Baskerville, serif;
+    font-variant-numeric: oldstyle-nums;
+}
+
+#projects-plot {
+    width: 100%;
+    max-width: 20em;
+    margin-block: 2em;
+    overflow: visible;
+}
