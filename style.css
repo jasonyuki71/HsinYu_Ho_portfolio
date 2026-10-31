@@ -212,3 +212,56 @@ select {
     margin-block: 2em;
     overflow: visible;
 }
+
+.chart-container {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  margin-bottom: 2em;
+  flex-wrap: wrap;
+}
+
+#projects-plot {
+  width: 20em;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+.chart-container .legend {
+  flex: 1;
+  min-width: 15em;
+}
+
+.searchBar {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  padding: 0.7em;
+  margin-bottom: 2em;
+}
+
+#projects-plot path {
+  transition: opacity 200ms;
+  cursor: pointer;
+}
+
+#projects-plot:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+#projects-plot path.selected {
+  stroke: canvastext;
+  stroke-width: 1;
+}
+
+.legend li.selected {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#reset-filters {
+  font: inherit;
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  cursor: pointer;
+}
