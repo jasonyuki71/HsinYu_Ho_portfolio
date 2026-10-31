@@ -16,8 +16,6 @@ projectsTitle.textContent = `${projects.length} Projects`;
 
 let data = [1, 2];
 
-let data = [1, 2];
-
 let arcGenerator = d3.arc()
   .innerRadius(0)
   .outerRadius(50);
