@@ -250,6 +250,7 @@ select {
 }
 
 #projects-plot path.selected {
+  fill: var(--selection-color);
   stroke: canvastext;
   stroke-width: 1;
 }
@@ -264,4 +265,50 @@ select {
   padding: 0.5em 1em;
   margin-bottom: 1em;
   cursor: pointer;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
+  gap: 1em;
+  list-style: none;
+  padding: 1em;
+  margin: 0;
+  border: 1px solid #ccc;
+}
+
+.chart-container {
+  --selection-color: #9b59b6;
+}
+
+.legend button {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  width: 100%;
+  padding: 0.25em;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.legend button:focus-visible {
+  outline: 2px solid canvastext;
+  outline-offset: 3px;
+}
+
+.legend .swatch {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  border-radius: 0.2em;
+  background: var(--color);
+}
+
+.legend li.selected .swatch {
+  background: var(--selection-color);
 }

@@ -8,8 +8,9 @@ const projectsTitle = document.querySelector(".projects-title");
 const searchInput = document.querySelector(".searchBar");
 
 // Keep the same color for each year
-let colors = d3.scaleOrdinal(d3.schemeTableau10)
-  .domain(projects.map((project) => project.year));
+let colors = d3.scaleOrdinal()
+    .domain(projects.map((project) => project.year))
+    .range(["#fa3e7ac7", "#65c0f9", "#f8e728"]);
 
 let selectedYear = null;
 
@@ -42,6 +43,11 @@ function renderPieChart(projectsToShow) {
   d3.select("#projects-plot").selectAll("*").remove();
   d3.select(".legend").selectAll("*").remove();
 
+  function toggleYear(year) {
+    selectedYear = selectedYear === year ? null : year;
+    updateProjects(projectsToShow);
+  }
+
   // Draw the slices
   arcData.forEach((d) => {
     d3.select("#projects-plot")
@@ -50,14 +56,7 @@ function renderPieChart(projectsToShow) {
       .attr("fill", colors(d.data.label))
       .classed("selected", d.data.label === selectedYear)
       .on("click", () => {
-        // Click the same year again to deselect
-        if (selectedYear === d.data.label) {
-          selectedYear = null;
-        } else {
-          selectedYear = d.data.label;
-        }
-
-        updateProjects(projectsToShow);
+        toggleYear(d.data.label);
       });
   });
 
@@ -67,9 +66,19 @@ function renderPieChart(projectsToShow) {
       .append("li")
       .classed("selected", d.label === selectedYear)
       .attr("style", `--color: ${colors(d.label)}`)
+      .append("button")
+      .attr("type", "button")
+      .attr("aria-pressed", d.label === selectedYear)
+      .on("click", () => {
+        toggleYear(d.label);
+        // Restore keyboard focus after rebuilding the legend.
+        d3.select(".legend").selectAll("button")
+          .filter((_, index) => data[index].label === d.label)
+          .node()?.focus({ preventScroll: true });
+      })
       .html(`
-        <span class="swatch"></span>
-        ${d.label} (${d.value})
+        <span class="swatch" aria-hidden="true"></span>
+        <span>${d.label} <em>(${d.value})</em></span>
       `);
   });
 }
