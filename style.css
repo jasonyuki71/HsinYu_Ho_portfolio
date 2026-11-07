@@ -312,3 +312,41 @@ select {
 .legend li.selected .swatch {
   background: var(--selection-color);
 }
+
+#commit-tooltip {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 0.75rem;
+
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: Canvas;
+  color: CanvasText;
+  border: 1px solid #dd8d8d;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(243, 177, 177, 0.2);
+}
+#commit-tooltip dt {
+  font-weight: bold;
+}
+#commit-tooltip dd {
+  margin: 0;
+}
+#commit-tooltip[hidden] {
+  display: none;
+}
+
+#chart .brush .selection {
+  fill: #1cd6fb84;
+  fill-opacity: 0.2;
+  stroke: #b4d1df;
+  stroke-width: 1.5;
+}
+#chart circle.selected {
+  fill: #e6ee4e;
+}
