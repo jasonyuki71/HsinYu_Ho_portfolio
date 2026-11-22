@@ -350,3 +350,118 @@ select {
 #chart circle.selected {
   fill: #e6ee4e;
 }
+
+.commit-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1em;
+  margin-block: 1.5em;
+}
+
+#commit-progress {
+  flex: 1;
+  min-width: 10em;
+}
+
+#commit-max-time {
+  margin-left: auto;
+}
+
+#chart .dots circle {
+  transition:
+    cx 200ms,
+    cy 200ms,
+    r 200ms,
+    fill 200ms;
+
+  @starting-style {
+    r: 0;
+  }
+}
+
+#files {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr);
+  gap: 0.5em 1em;
+}
+
+#files > .file {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}
+
+#files dt {
+  grid-column: 1;
+  overflow-wrap: anywhere;
+}
+
+#files dd {
+  grid-column: 2;
+  margin: 0;
+}
+
+#files dt small {
+  display: block;
+  font-size: 80%;
+  opacity: 0.7;
+}
+
+#files dd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 0.15em;
+  padding-top: 0.6em;
+}
+
+#files .loc {
+  width: 0.5em;
+  height: 0.5em;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color);
+}
+
+#scrolly-1 {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+#scrolly-1 > * {
+  flex: 1;
+  min-width: 0;
+}
+
+#scatter-story {
+  position: relative;
+}
+
+#scatter-plot {
+  position: sticky;
+  top: 1rem;
+  height: 50vh;
+}
+
+#scatter-story .step {
+  min-height: 60vh;
+  box-sizing: border-box;
+  padding-block: 2rem;
+}
+
+#scatter-story .step p {
+  margin-block: 0 1rem;
+}
+
+#scatter-story .step {
+  opacity: 0.4;
+  transition: opacity 200ms;
+}
+
+#scatter-story .step.is-active {
+  opacity: 1;
+}
