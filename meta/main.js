@@ -67,7 +67,7 @@ function renderScatterplot(commits) {
   if (commits.length === 0) return;
 
   const width = 800;
-  const height = 400;
+  const height = 600;
   const padding = 50;
   const timeTicks = [0, 6, 12, 18, 24];
 
@@ -400,4 +400,59 @@ scroller
 
 window.addEventListener("resize", () => {
   scroller.resize();
+});
+
+const fileSteps = d3.select("#files-story")
+  .selectAll(".step")
+  .data(chronologicalCommits, (commit) => commit.id)
+  .join("div")
+  .attr("class", "step");
+
+fileSteps.each(function (commit, index) {
+  const step = d3.select(this);
+  const cumulativeCommits = chronologicalCommits.slice(0, index + 1);
+  const cumulativeLines = cumulativeCommits.flatMap((item) => item.lines);
+  const fileCount = new Set(
+    cumulativeLines.map((line) => line.file)
+  ).size;
+
+  step.append("p")
+    .text(commit.datetime.toLocaleString("en-US", {
+      dateStyle: "long",
+      timeStyle: "short",
+    }));
+
+  step.append("p")
+    .text(
+      index === 0
+        ? "The codebase begins with this first commit."
+        : `By this commit, ${cumulativeLines.length} lines have been recorded across ${fileCount} files.`
+    );
+});
+
+function onFileStepEnter(response) {
+  const commit = d3.select(response.element).datum();
+  const filteredCommits = commits.filter(
+    (item) => item.datetime <= commit.datetime
+  );
+
+  updateFileDisplay(filteredCommits);
+
+  fileSteps.classed(
+    "is-active",
+    (stepCommit) => stepCommit.id === commit.id
+  );
+}
+
+const fileScroller = scrollama();
+
+fileScroller
+  .setup({
+    step: "#files-story .step",
+    offset: 0.5,
+  })
+  .onStepEnter(onFileStepEnter);
+
+window.addEventListener("resize", () => {
+  fileScroller.resize();
 });

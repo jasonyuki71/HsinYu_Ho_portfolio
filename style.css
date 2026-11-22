@@ -448,7 +448,7 @@ select {
 }
 
 #scatter-story .step {
-  min-height: 60vh;
+  min-height: 50vh;
   box-sizing: border-box;
   padding-block: 2rem;
 }
@@ -464,4 +464,47 @@ select {
 
 #scatter-story .step.is-active {
   opacity: 1;
+}
+
+#scrolly-2 {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+#scrolly-2 > * {
+  flex: 1;
+  min-width: 0;
+}
+
+#files-story {
+  position: relative;
+}
+
+#files-plot {
+  position: sticky;
+  top: 1rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+#files-story .step {
+  min-height: 50vh;
+  box-sizing: border-box;
+  padding-block: 2rem;
+  opacity: 0.4;
+  transition: opacity 200ms;
+}
+
+#files-story .step p {
+  margin-block: 0 1rem;
+}
+
+#files-story .step.is-active {
+  opacity: 1;
+}
+
+#commit-progress {
+  accent-color: #87c2f9;
 }
