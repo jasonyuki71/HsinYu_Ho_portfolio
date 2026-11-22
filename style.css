@@ -490,7 +490,7 @@ select {
 }
 
 #files-story .step {
-  min-height: 50vh;
+  min-height: 60vh;
   box-sizing: border-box;
   padding-block: 2rem;
   opacity: 0.4;
