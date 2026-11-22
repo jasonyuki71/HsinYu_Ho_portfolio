@@ -351,23 +351,6 @@ select {
   fill: #e6ee4e;
 }
 
-.commit-filter {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1em;
-  margin-block: 1.5em;
-}
-
-#commit-progress {
-  flex: 1;
-  min-width: 10em;
-}
-
-#commit-max-time {
-  margin-left: auto;
-}
-
 #chart .dots circle {
   transition:
     cx 200ms,
@@ -448,7 +431,7 @@ select {
 }
 
 #scatter-story .step {
-  min-height: 50vh;
+  min-height: 70vh;
   box-sizing: border-box;
   padding-block: 2rem;
 }
@@ -505,6 +488,58 @@ select {
   opacity: 1;
 }
 
-#commit-progress {
-  accent-color: #87c2f9;
+#scrolly-1 {
+  gap: 1rem;
+}
+
+#scatter-story {
+  flex: 4;
+  min-width: 0;
+}
+
+#scatter-plot {
+  flex: 6;
+  min-width: 0;
+  position: sticky;
+  top: 1rem;
+  height: calc(100vh - 2rem);
+  display: flex;
+  flex-direction: column;
+}
+
+#scatter-plot h3 {
+  margin-block: 0.5rem;
+}
+
+#scatter-plot #language-breakdown + h3 {
+  margin-top: 1.5rem;
+}
+
+#chart {
+  flex-shrink: 0;
+}
+
+#chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 38vh;
+}
+
+#selection-count {
+  margin-block: 0.25rem;
+}
+
+#language-breakdown {
+  flex-shrink: 0;
+  max-height: 20vh;
+  overflow-y: auto;
+  margin-block: 0.25rem;
+}
+
+#files {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  margin-block: 0;
 }

@@ -12,25 +12,18 @@
     <h1>Meta</h1>
     <p>Statistics about the code in my portfolio.</p>
     <div id="stats"></div>
-    <div class="commit-filter">
-        <label for="commit-progress">Show commits until:</label>
-        <input id="commit-progress" type="range" min="0" max="100" step="any" value="100"/>
-        <time id="commit-max-time"></time>
-    </div>
-    <h2>Commits by Time of Day</h2>
+    <h2>Code Evolution over Time</h2>
+
     <div id="scrolly-1">
-    <div id="scatter-story">
-    </div>
-    <div id="scatter-plot">
-    <div id="chart"></div>
-    <p id="selection-count">No commits selected</p>
-    <dl id="language-breakdown"></dl>
-    </div>
-    </div>
-    <h2>File Sizes over Time</h2>
-    <div id="scrolly-2">
-        <div id="files-story"></div>
-        <div id="files-plot">
+        <div id="scatter-story"></div>
+
+        <div id="scatter-plot">
+            <h3>Commits by Time of Day</h3>
+            <div id="chart"></div>
+            <p id="selection-count">No commits selected</p>
+            <dl id="language-breakdown"></dl>
+
+            <h3>File Sizes over Time</h3>
             <dl id="files"></dl>
         </div>
     </div>

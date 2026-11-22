@@ -285,42 +285,8 @@ const commits = processCommits(data);
 renderCommitInfo(data, commits);
 const updateScatterplot = renderScatterplot(commits);
 
-let commitProgress = 100;
-
-const timeScale = d3.scaleTime()
-  .domain(d3.extent(commits, (commit) => commit.datetime))
-  .range([0, 100]);
-
-let commitMaxTime = timeScale.invert(commitProgress);
-
-const commitSlider = document.getElementById("commit-progress");
-const commitTimeDisplay = document.getElementById("commit-max-time");
-
-function onTimeSliderChange() {
-  commitProgress = Number(commitSlider.value);
-  commitMaxTime = timeScale.invert(commitProgress);
-
-  commitTimeDisplay.textContent = commitMaxTime.toLocaleString(
-    "en-US",
-    {
-      dateStyle: "long",
-      timeStyle: "short",
-    }
-  );
-
-  commitTimeDisplay.dateTime = commitMaxTime.toISOString();
-
-  const filteredCommits = commits.filter(
-    (commit) => commit.datetime <= commitMaxTime
-  );
-
-  updateScatterplot(filteredCommits);
-  updateFileDisplay(filteredCommits);
-}
-
 const lineColors = d3.scaleOrdinal(d3.schemeTableau10);
-commitSlider.addEventListener("input", onTimeSliderChange);
-onTimeSliderChange();
+updateFileDisplay(commits);
 
 const chronologicalCommits = [...commits].sort(
   (a, b) => a.datetime - b.datetime
@@ -362,20 +328,9 @@ steps.each(function (commit, index) {
 
 function onStepEnter(response) {
   const commit = d3.select(response.element).datum();
-  commitMaxTime = commit.datetime;
-  commitProgress = timeScale(commitMaxTime);
-  commitSlider.value = String(commitProgress);
-  commitTimeDisplay.textContent = commitMaxTime.toLocaleString(
-    "en-US",
-    {
-      dateStyle: "long",
-      timeStyle: "short",
-    }
-  );
-  commitTimeDisplay.dateTime = commitMaxTime.toISOString();
 
   const filteredCommits = commits.filter(
-    (commit) => commit.datetime <= commitMaxTime
+    (item) => item.datetime <= commit.datetime
   );
 
   updateScatterplot(filteredCommits);
@@ -400,59 +355,4 @@ scroller
 
 window.addEventListener("resize", () => {
   scroller.resize();
-});
-
-const fileSteps = d3.select("#files-story")
-  .selectAll(".step")
-  .data(chronologicalCommits, (commit) => commit.id)
-  .join("div")
-  .attr("class", "step");
-
-fileSteps.each(function (commit, index) {
-  const step = d3.select(this);
-  const cumulativeCommits = chronologicalCommits.slice(0, index + 1);
-  const cumulativeLines = cumulativeCommits.flatMap((item) => item.lines);
-  const fileCount = new Set(
-    cumulativeLines.map((line) => line.file)
-  ).size;
-
-  step.append("p")
-    .text(commit.datetime.toLocaleString("en-US", {
-      dateStyle: "long",
-      timeStyle: "short",
-    }));
-
-  step.append("p")
-    .text(
-      index === 0
-        ? "The codebase begins with this first commit."
-        : `By this commit, ${cumulativeLines.length} lines have been recorded across ${fileCount} files.`
-    );
-});
-
-function onFileStepEnter(response) {
-  const commit = d3.select(response.element).datum();
-  const filteredCommits = commits.filter(
-    (item) => item.datetime <= commit.datetime
-  );
-
-  updateFileDisplay(filteredCommits);
-
-  fileSteps.classed(
-    "is-active",
-    (stepCommit) => stepCommit.id === commit.id
-  );
-}
-
-const fileScroller = scrollama();
-
-fileScroller
-  .setup({
-    step: "#files-story .step",
-    offset: 0.5,
-  })
-  .onStepEnter(onFileStepEnter);
-
-window.addEventListener("resize", () => {
-  fileScroller.resize();
 });
